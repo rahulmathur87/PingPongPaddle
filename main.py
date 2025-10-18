@@ -3,6 +3,9 @@ from paddle import Paddle
 from ball import Ball
 import time
 
+# Variables
+bounce_angle = 60
+
 
 # Screen setup
 screen = Screen()
@@ -28,8 +31,18 @@ screen.listen()
 # Game loop
 game_on = True
 while game_on:
-    screen.update()
     time.sleep(0.1)
+    screen.update()
+    if ball.ycor() >= 280:
+        if ball.xcor() < 0:
+            ball.left(bounce_angle)
+        else:
+            ball.right(bounce_angle)
+    elif ball.ycor() <= -280:
+        if ball.xcor() > 0:
+            ball.left(bounce_angle)
+        else:
+            ball.right(bounce_angle)
     ball.move()
 
 screen.exitonclick()

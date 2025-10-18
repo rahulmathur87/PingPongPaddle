@@ -1,5 +1,17 @@
 from turtle import Turtle
-from random import randint
+import random
+
+RANGES = [
+    (0, 60),
+    (120, 240),
+    (300, 360)
+]
+
+
+def get_angle():
+    start, end = random.choice(RANGES)
+    angle = random.randint(start, end)
+    return angle
 
 
 class Ball(Turtle):
@@ -8,7 +20,8 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("blue")
         self.penup()
-        self.setheading(randint(0, 360))
+        self.setheading(get_angle())
+        # self.setheading(300)
 
     def move(self):
-        self.forward(20)
+        self.forward(15)

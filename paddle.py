@@ -10,7 +10,7 @@ class Paddle:
             segment = Turtle("square")
             segment.color("white")
             segment.penup()
-            segment.goto(x_coordinate, coordinate)
+            segment.teleport(x_coordinate, coordinate)
             self.body.append(segment)
 
     def up(self):
@@ -20,4 +20,3 @@ class Paddle:
     def down(self):
         for segment in self.body:
             segment.goto(segment.xcor(), segment.ycor() - 20)
-
