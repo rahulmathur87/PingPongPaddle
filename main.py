@@ -16,4 +16,17 @@ right_paddle = Paddle(378)
 ball = Ball()
 screen.update()
 
+# Paddle movement control
+screen.onkeypress(left_paddle.up, "w")
+screen.onkeypress(left_paddle.down, "s")
+screen.onkeypress(right_paddle.up, "Up")
+screen.onkeypress(right_paddle.down, "Down")
+
+screen.listen()
+
+# Game loop
+game_on = True
+while game_on:
+    screen.update()
+
 screen.exitonclick()
