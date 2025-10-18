@@ -1,4 +1,5 @@
 from turtle import Turtle
+from random import randint
 
 
 class Ball(Turtle):
@@ -7,3 +8,7 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("blue")
         self.penup()
+        self.setheading(randint(0, 360))
+
+    def move(self):
+        self.forward(20)
