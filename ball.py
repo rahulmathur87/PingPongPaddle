@@ -20,8 +20,8 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("blue")
         self.penup()
-        self.setheading(get_angle())
-        # self.setheading(300)
+        # self.setheading(get_angle())
+        self.setheading(180)
 
     def move(self):
         self.forward(15)

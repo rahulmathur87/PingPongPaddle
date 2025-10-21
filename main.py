@@ -33,6 +33,7 @@ game_on = True
 while game_on:
     time.sleep(0.1)
     screen.update()
+# Adding bounce if ball hits the roof or floor
     if ball.ycor() >= 280:
         if ball.xcor() < 0:
             ball.left(bounce_angle)
@@ -43,6 +44,11 @@ while game_on:
             ball.left(bounce_angle)
         else:
             ball.right(bounce_angle)
+    # Checking if ball hits paddle
+    if ball.xcor() <= -370 and ball.distance(left_paddle) <= 50:
+        ball.setheading(ball.heading() + 150)
+    elif ball.xcor() >= 362 and ball.distance(right_paddle) <= 50:
+        ball.setheading(ball.heading() - 150)
     ball.move()
 
 screen.exitonclick()
