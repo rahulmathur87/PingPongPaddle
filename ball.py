@@ -1,17 +1,5 @@
 from turtle import Turtle
-import random
-
-RANGES = [
-    (0, 60),
-    (120, 240),
-    (300, 360)
-]
-
-
-def get_angle():
-    start, end = random.choice(RANGES)
-    angle = random.randint(start, end)
-    return angle
+import time
 
 
 class Ball(Turtle):
@@ -34,3 +22,7 @@ class Ball(Turtle):
 
     def hit(self):
         self.x_move *= -1
+
+    def refresh(self):
+        time.sleep(0.5)
+        self.goto(0, 0)

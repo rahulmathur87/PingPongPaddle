@@ -1,10 +1,8 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
-
-# Variables
-bounce_angle = 60
 
 
 # Screen setup
@@ -13,6 +11,9 @@ screen.title("Ping Pong")
 screen.bgcolor("black")
 screen.setup(800, 600)
 screen.tracer(0)
+
+# Importing scoreboard
+scoreboard = Scoreboard()
 
 # Importing paddles and ball
 left_paddle = Paddle(-375)
@@ -34,13 +35,17 @@ while game_on:
     time.sleep(0.1)
     screen.update()
 # Adding bounce if ball hits the roof or floor
-    if ball.ycor() >= 280 or ball.ycor() <= -280:
+    if ball.ycor() >= 290 or ball.ycor() <= -290:
         ball.bounce()
     # Checking if ball hits paddle
     if ball.xcor() <= -355 and ball.distance(left_paddle) <= 50:
         ball.hit()
     elif ball.xcor() >= 355 and ball.distance(right_paddle) <= 50:
         ball.hit()
+# If paddle misses ball
+    if ball.xcor() < -400 or ball.xcor() > 400:
+        ball.hit()
+        ball.refresh()
     ball.move()
 
 screen.exitonclick()
