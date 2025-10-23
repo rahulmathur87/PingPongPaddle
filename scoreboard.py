@@ -9,7 +9,17 @@ class Scoreboard(Turtle):
         self.color("yellow")
         self.player1score = 0
         self.player2score = 0
-        self.goto(-280, 280)
-        self.write(f"Player1: {self.player1score}", font=('Arial', 10, 'normal'))
-        self.goto(230, 280)
-        self.write(f"Player2: {self.player2score}", font=('Arial', 10, 'normal'))
+        self.update_score()
+
+    def update_score(self):
+        self.clear()
+        self.goto(-280, 275)
+        self.write(f"Player1: {self.player1score}", font=('Arial', 16, 'normal'))
+        self.goto(230, 275)
+        self.write(f"Player2: {self.player2score}", font=('Arial', 16, 'normal'))
+
+    def player1_point(self):
+        self.player1score += 1
+
+    def player2_point(self):
+        self.player2score += 1
