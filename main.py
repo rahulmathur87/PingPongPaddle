@@ -12,6 +12,8 @@ screen.bgcolor("black")
 screen.setup(800, 600)
 screen.tracer(0)
 
+default_speed = 0.1
+
 # Importing scoreboard
 scoreboard = Scoreboard()
 
@@ -32,7 +34,7 @@ screen.listen()
 # Game loop
 game_on = True
 while game_on:
-    time.sleep(0.1)
+    time.sleep(default_speed)
     screen.update()
 # Adding bounce if ball hits the roof or floor
     if ball.ycor() >= 290 or ball.ycor() <= -290:
@@ -40,6 +42,7 @@ while game_on:
 # Checking if ball hits paddle
     if ball.xcor() <= -355 and ball.distance(left_paddle) <= 50:
         ball.hit()
+        default_speed = default_speed * 0.7
     elif ball.xcor() >= 355 and ball.distance(right_paddle) <= 50:
         ball.hit()
 # If paddle misses ball
@@ -48,6 +51,7 @@ while game_on:
             scoreboard.player2_point()
         else:
             scoreboard.player1_point()
+        default_speed = 0.1
         scoreboard.update_score()
         ball.hit()
         ball.refresh()
